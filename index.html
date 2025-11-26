@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Global and Local Execution Context Example
+</body>
+<script>
+    // Step 1: Declare a global variable
+let age = 25;
+
+// Step 2: Function to display the value of age
+function displayAge() {
+    console.log("Age inside displayAge:", age);
+}
+
+// Step 3: Function to change the value of age
+function changeAge(newAge) {
+    age = newAge; 
+    console.log("Age inside changeAge:", age);
+}
+
+// Calling the functions
+displayAge(); 
+changeAge(30);  
+displayAge();  
+
+</script>
+</html>
