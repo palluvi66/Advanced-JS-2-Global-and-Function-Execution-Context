@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    setInterval and clearInterval Example
+</body>
+<script>
+    let count = 0;
+
+const loader = setInterval(() => {
+  console.log("Loading...");
+  count++;
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(loader);      // stop the repeating messages
+  console.log("Loaded successfully!");
+}, 5000);
+
+</script>
+</html>
