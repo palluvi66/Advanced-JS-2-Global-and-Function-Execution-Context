@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Debugging Event Loop Order 
+</body>
+
+<script>
+    // Synchronous code runs first (Call Stack)
+
+// console.log("Begin") runs immediately → prints Begin.
+
+// setTimeout(..., 0) is synchronous to schedule the timer, but the callback itself is handed off to the browser/Node timers API (a macrotask).
+
+// Promise.resolve().then(...) creates a fulfilled promise; the .then() callback is scheduled as a microtask.
+
+// console.log("End") runs immediately after scheduling the asynchronous pieces → prints End.
+
+// After the synchronous code finishes, microtasks run before macrotasks
+
+// The event loop first drains the microtask queue. Promises place their .then() callbacks into the microtask queue. So Promise Task runs next.
+
+// Then macrotasks (timers) run
+
+// After microtasks are finished, the event loop runs the next macrotask from the callback queue — the setTimeout callback — printing Timeout Task.
+
+// So the final sequence is:
+
+// Begin (sync)
+
+// End (sync)
+
+// Promise Task (microtask)
+
+// Timeout Task (macrotask / timer)
+    console.log("Begin");
+
+setTimeout(() => {
+  console.log("Timeout Task");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise Task");
+});
+
+console.log("End");
+
+</script>
+</html>
