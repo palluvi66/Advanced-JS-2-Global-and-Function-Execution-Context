@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add List Items</title>
+  <style>
+    .odd-item {
+      font-weight: bold;
+      color: blue;
+    }
+    .even-item {
+      font-style: italic;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dynamic List Demo</h2>
+
+  <ul id="list">
+    <li class="odd-item">Item 1</li>
+    <li class="even-item">Item 2</li>
+    <li class="odd-item">Item 3</li>
+  </ul>
+
+  <button id="addBtn">Add Item</button>
+
+  <script>
+    const list = document.querySelector('#list');
+    const btn = document.querySelector('#addBtn');
+
+    btn.addEventListener('click', function () {
+      const newLi = document.createElement('li');
+
+      // Determine next item number
+      const currentCount = list.children.length + 1;
+      newLi.textContent = `Item ${currentCount}`;
+
+      // Apply styling based on sequence number
+      if (currentCount % 2 !== 0) {
+        newLi.classList.add('odd-item'); // Odd
+      } else {
+        newLi.classList.add('even-item'); // Even
+      }
+
+      list.appendChild(newLi);
+    });
+  </script>
+
+</body>
+</html>
